@@ -1,0 +1,129 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Outer_space_stars_planets_dual_screen_deviantart_spaceships_artwork_vehicles_5760x1200.jpg" type="Texture" id=1]
+[ext_resource path="res://KinematicBody2D.gd" type="Script" id=2]
+[ext_resource path="res://rocket/rocketlow.png" type="Texture" id=3]
+[ext_resource path="res://rocket/rocketmedium.png" type="Texture" id=4]
+[ext_resource path="res://rocket/rocket.png" type="Texture" id=5]
+[ext_resource path="res://rocket/rockethigh.png" type="Texture" id=6]
+
+[sub_resource type="GDScript" id=1]
+
+script/source = "extends ParallaxBackground
+
+
+
+func _physics_process(delta):
+
+	pass
+"
+
+[sub_resource type="SpriteFrames" id=2]
+
+animations = [ {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "desacelerate",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "acelerate",
+"speed": 5.0
+} ]
+
+[node name="Node2D" type="Node2D" index="0"]
+
+position = Vector2( 249.5, 203.5 )
+scale = Vector2( 2.67188, 1.35938 )
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="." index="0"]
+
+layer = -1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+scroll_offset = Vector2( 0, 0 )
+scroll_base_offset = Vector2( 1000, 1000 )
+scroll_base_scale = Vector2( 1, 1 )
+scroll_limit_begin = Vector2( 0, 0 )
+scroll_limit_end = Vector2( 0, 0 )
+scroll_ignore_camera_zoom = true
+script = SubResource( 1 )
+_sections_unfolded = [ "Scroll" ]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground" index="0"]
+
+position = Vector2( 97.9047, 45.6211 )
+scale = Vector2( 2.80952, 1.26941 )
+motion_scale = Vector2( 0.5, 0.5 )
+motion_offset = Vector2( 0, 0 )
+motion_mirroring = Vector2( 0, 0 )
+_sections_unfolded = [ "Motion" ]
+
+[node name="Outer_space_stars_planets_dual_screen_deviantart_spaceships_artwork_vehicles_5760x1200" type="Sprite" parent="ParallaxBackground/ParallaxLayer" index="0"]
+
+modulate = Color( 0.375, 0.375, 0.375, 1 )
+position = Vector2( 2399.9, -130.201 )
+scale = Vector2( 0.951007, 1.07087 )
+texture = ExtResource( 1 )
+_sections_unfolded = [ "Visibility", "Z Index" ]
+
+[node name="KinematicBody2D" type="KinematicBody2D" parent="." index="1"]
+
+position = Vector2( -59.3573, -120.554 )
+scale = Vector2( 1.05152, 0.933819 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+collision/safe_margin = 0.08
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="KinematicBody2D" index="0"]
+
+position = Vector2( -32.9784, -44.8074 )
+scale = Vector2( 0.126083, 0.222151 )
+frames = SubResource( 2 )
+animation = "idle"
+playing = true
+centered = false
+offset = Vector2( 250, 700 )
+
+[node name="Camera2D" type="Camera2D" parent="KinematicBody2D" index="1"]
+
+position = Vector2( 0.4, -1.57553 )
+offset = Vector2( 100, 0 )
+anchor_mode = 1
+rotating = false
+current = true
+zoom = Vector2( 1, 1 )
+limit_left = 0
+limit_top = 0
+limit_right = 25000
+limit_bottom = 2000
+limit_smoothed = false
+drag_margin_h_enabled = false
+drag_margin_v_enabled = false
+smoothing_enabled = true
+smoothing_speed = 5.0
+offset_v = 0.0
+offset_h = 0.0
+drag_margin_left = 0.2
+drag_margin_top = 0.2
+drag_margin_right = 0.2
+drag_margin_bottom = 0.2
+editor_draw_screen = true
+editor_draw_limits = false
+editor_draw_drag_margin = false
+_sections_unfolded = [ "Drag Margin", "Editor", "Limit", "Material", "Offset", "Smoothing", "Transform", "Visibility", "Z Index" ]
+
+
